@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded',function(){
     for(let button of buttons){
         button.addEventListener('click',function(){
             //console.log('clicked')
-            //console.log(this)
+            console.log(this.getAttribute("data-type"))
             if(this.getAttribute("data-type")==="submit"){
-                alert('You clicked submit')
+                //alert('You clicked submit')
+                checkAnswer();
             }else{
                 let gameType=this.getAttribute("data-type")
+
                 //alert(`You clicked ${gameType}`)
                 runGame(gameType)
             }
@@ -34,21 +36,32 @@ function runGame(gameType){
     }
 }
 
-
+/**
+ * checks the answer against first element retairned in array
+ */
 function checkAnswer(){
-   
-
+   let useranswer=parseInt(document.getElementById('answer-box').value);
+   console.log(useranswer);
+   let calculateAnswer=calculateCorrectAnswe();
+   console.log(calculateAnswer[0]);
+   let isCorrect = useranswer === calculateAnswer[0];
+   if(isCorrect){
+    alert("Hey! you got it right! :D");
+   }else{
+    alert(`awww.... you answered ${useranswer}. the correct answer was ${calculateAnswer[0]}!`)
+   }
+   runGame(calculateAnswer[1])
 }
 /**
  * gets operands and oprator directly from dom
  */
 function calculateCorrectAnswe(){
-    let operand1=parseInt(document.getElementById('operand1').innerText)
-    let operand2=parseInt(document.getElementById('operand2').innerText)
-    let operator=parseInt(document.getElementById('operator').innerText)
+    let operand1=parseInt(document.getElementById('operand1').innerText);
+    let operand2=parseInt(document.getElementById('operand2').innerText);
+    let operator=document.getElementById('operator').innerText;
 
     if(operator==='+'){
-        return [operand1+operand1,"addition"]
+        return [operand1+operand2,"addition"]
     }else{
         alert(`Unimplemented oprator ${operator}`);
         throw `Unimplemented oprator ${operator}, Aborting`;
@@ -63,9 +76,9 @@ function incrementwrongAnswer(){
     
 }
 
-function checkAnswer(){
+//function checkAnswer(){
     
-}
+//}
 
 function displayAdditionQuestion(operand1,operand2){
     document.getElementById('operand1').textContent=operand1;
