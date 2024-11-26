@@ -39,9 +39,20 @@ function checkAnswer(){
    
 
 }
-
+/**
+ * gets operands and oprator directly from dom
+ */
 function calculateCorrectAnswe(){
-    
+    let operand1=parseInt(document.getElementById('operand1').innerText)
+    let operand2=parseInt(document.getElementById('operand2').innerText)
+    let operator=parseInt(document.getElementById('operator').innerText)
+
+    if(operator==='+'){
+        return [operand1+operand1,"addition"]
+    }else{
+        alert(`Unimplemented oprator ${operator}`);
+        throw `Unimplemented oprator ${operator}, Aborting`;
+    }
 }
 
 function incrementScore(){
