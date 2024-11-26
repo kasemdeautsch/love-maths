@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--and google fonts-->
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
@@ -16,14 +16,38 @@
 
 <body>
     <h1 class="heading">
-        <img class="logo" alt="" src="assets/images/logo.png"> Love Maths
+        <img class="logo" alt="logo" src="assets/images/logo.png"> Love Maths
     </h1>
     <div class="game-aria">
+        <div class="controls-area">
 
+            <button class="btn btn--big btn--green">
+                <i class="fasw fa-plus"></i>
+            </button>
+            <button class="btn btn--big btn--blue">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="btn btn--big btn--orange">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="btn btn--big btn--red">
+                <i class="fas fa-divide"></i>
+            </button>
+            
+        </div>
+        <div class="question-area">
+            <span id="operand1">0</span>
+            <span id="operator">x</span>
+            <span id="operand2">0</span>
+            <span >=</span>
+            <p class="answer-message">enter answer</p>
+            <input type="number" name="" id="answer-box">
+        </div>
+        <button class="btn btn--gray">Submit answer</button>
     </div>
     <div id="score-aria">
-       <p class="scores">Correct answers <span id="score">0</span></p>
-       <p class="scores">Incrrect answers<span id="incorrect">0</span></p>
+        <p class="scores">Correct answers <span id="score">0</span></p>
+        <p class="scores">Incrrect answers<span id="incorrect">0</span></p>
 
     </div>
 
