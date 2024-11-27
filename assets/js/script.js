@@ -4,9 +4,10 @@ document.addEventListener('DOMContentLoaded',function(){
     console.log('okk.....')
     let buttons=document.getElementsByTagName('button')
     for(let button of buttons){
-        button.addEventListener('click',function(){
-            //console.log('clicked')
-            console.log(this.getAttribute("data-type"))
+        button.addEventListener('click',function(event){
+            console.log(event)
+            //console.log(this)
+            //console.log(this.getAttribute("data-type"))
             if(this.getAttribute("data-type")==="submit"){
                 //alert('You clicked submit')
                 checkAnswer();
@@ -18,6 +19,14 @@ document.addEventListener('DOMContentLoaded',function(){
             }
         });
     }
+    document.getElementById('answer-box').addEventListener('keydown',function(event){
+        //console.log(this) / this = event.target 
+        //console.log(event.target)
+        console.log(event)
+        if(event.key==="Enter"){
+            checkAnswer()
+        }
+    });
     runGame('addition')
 });
 
@@ -26,6 +35,8 @@ document.addEventListener('DOMContentLoaded',function(){
  * and after the user's answer has been processed
  */
 function runGame(gameType){
+    document.getElementById('answer-box').value="";
+    document.getElementById('answer-box').focus();
     let num1=Math.floor(Math.random()*25) + 1;
     let num2=Math.floor(Math.random()*25) + 1;
     if(gameType==="addition"){
@@ -48,9 +59,9 @@ function runGame(gameType){
  */
 function checkAnswer(){
    let useranswer=parseInt(document.getElementById('answer-box').value);
-   console.log(useranswer);
+   //console.log(useranswer);
    let calculateAnswer=calculateCorrectAnswe();
-   console.log(calculateAnswer[0]);
+   //console.log(calculateAnswer[0]);
    let isCorrect = useranswer === calculateAnswer[0];
    if(isCorrect){
     alert("Hey! you got it right! :D");
